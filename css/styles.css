@@ -1,8 +1,20 @@
 #title {
   font-size: 100px;
 }
+
+#die {
+  background-color: #DCA55C;
+}
+
+.player-turn-true {
+  background-color: lightblue;
+}
+
+.player-turn-false {
+  background-color: #DCA55C;
+}
+
 #player1Box, #player2Box, #die {
-  background-color: antiquewhite;
   font-family: sans-serif;
   box-shadow: 6px 6px 6px black;
   width: 170px;
@@ -24,7 +36,7 @@
   margin-top: 30%;
 }
 
-#hold-box {
+#button-hold {
   width: 170px;
   margin: auto;
   margin-top: 20px;
