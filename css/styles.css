@@ -1,5 +1,5 @@
 #title {
-  font-size: 50px;
+  font-size: 100px;
 }
 #player1Box, #player2Box, #die {
   background-color: antiquewhite;
@@ -11,6 +11,7 @@
 }
 
 #button-roll {
+  box-shadow: 3px 5px 8px black;
   background: lightblue;
   border-radius: 50%;
   width: 170px;
@@ -24,11 +25,44 @@
 }
 
 #hold-box {
-  width: 400px;
+  width: 170px;
   margin: auto;
+  margin-top: 20px;
+  background-color: rgb(255, 66, 66);
+  font-family: sans-serif;
+  box-shadow: 6px 6px 6px black;
 }
 
 body {
   text-align: center;
+  background-color: lightslategray;
+}
+
+
+
+/* -------------- Title Animation -------------- */
+.wrapper {
+  text-shadow: rgb(13, 104, 190) 5px 2px 1px;
+	text-align: center;
+  color: #fff;
+  font-size: 100px;
+  font-family: cursive;
+  font-weight: 700;
+  margin: 25px 25px 15px 0px;
+  background: linear-gradient(to right, #a4c9c4 10%, rgb(136, 33, 33) 50%, #daddc7 60%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 7s linear infinite;
+  display: inline-block;
+	}
+@keyframes textclip {
+	to {
+		background-position: 200% center;
+	}
 }
 
