@@ -13,7 +13,9 @@ $(document).ready(function () {
   $("#button-roll").click(function (event) {
     event.preventDefault();
     let randomNumber = Math.floor(Math.random() * 6) + 1;
-    
+    let snd = new Audio("snd/dice-roll.wav");
+    snd.currentTime=0;
+    snd.play();
     if (currentGame.isPlayer1Turn) {
       currentGame.player1Score += randomNumber;
       $("#p1-score").text(currentGame.player1Score)
@@ -25,6 +27,9 @@ $(document).ready(function () {
   });
   $("#button-hold").click(function(event){
     event.preventDefault();
+    let snd = new Audio("snd/click-sound.wav");
+    snd.currentTime=0;
+    snd.play();
     currentGame.isPlayer1Turn = !currentGame.isPlayer1Turn;
     currentGame.isPlayer2Turn = !currentGame.isPlayer2Turn;
     if ($("#player1Box").hasClass("player-turn-true")) {

@@ -3,15 +3,15 @@
 }
 
 #die {
-  background-color: #DCA55C;
-}
-
-.player-turn-true {
   background-color: lightblue;
 }
 
+.player-turn-true {
+  background-color: #51be12;
+}
+
 .player-turn-false {
-  background-color: #DCA55C;
+  background-color: #c04848;
 }
 
 #player1Box, #player2Box, #die {
@@ -38,9 +38,10 @@
 
 #button-hold {
   width: 170px;
+  height: 80px;
   margin: auto;
   margin-top: 20px;
-  background-color: rgb(255, 66, 66);
+  background-color: rgb(210, 212, 46);
   font-family: sans-serif;
   box-shadow: 6px 6px 6px black;
 }
