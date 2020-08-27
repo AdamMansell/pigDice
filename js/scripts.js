@@ -5,20 +5,10 @@ function Game(player1Score, player2Score, isPlayer1Turn, isPlayer2Turn) {
   this.isPlayer2Turn = isPlayer2Turn;
 }
 
-// let modal = document.getElementById("myModal");
-// let span = document.getElementsByClassName("close")[0];
+function Hold(playerScoreOnHold){
+  this.playerScoreOnHold = playerScoreOnHold;
+}
 
-// modal.style.display = "block";
-
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
 
 Game.prototype.isWinner = function(playerScore){
   if (playerScore >= 50){
@@ -57,7 +47,8 @@ function colorSwitch() {
 }
 
 $(document).ready(function () {
-
+  let p1ScoreOnHold = new Hold(0);
+  let p2ScoreOnHold = new Hold(0);
   let currentGame = new Game(0, 0, true, false);
   // $("#player1Box").addClass("player-turn-true");
   // $("#player2Box").addClass("player-turn-false");
@@ -73,11 +64,11 @@ $(document).ready(function () {
       snd.currentTime = 0;
       snd.play();
       if (currentGame.isPlayer1Turn) {
-        currentGame.player1Score = 0;
+        currentGame.player1Score = p1ScoreOnHold.playerScoreOnHold;
         $("#p1-score").text(currentGame.player1Score);
         colorSwitch();
       } else if (currentGame.isPlayer2Turn) {
-        currentGame.player2Score = 0;
+        currentGame.player2Score = p2ScoreOnHold.playerScoreOnHold;
         $("#p2-score").text(currentGame.player2Score);
         colorSwitch();
       }
@@ -97,8 +88,10 @@ $(document).ready(function () {
     let snd = new Audio("snd/click-sound.wav");
     snd.currentTime = 0;
     snd.play();
+    currentGame.isPlayer1Turn ? p1ScoreOnHold.playerScoreOnHold = currentGame.player1Score : p2ScoreOnHold.playerScoreOnHold = currentGame.player2Score;
     currentGame.isPlayer1Turn = !currentGame.isPlayer1Turn;
     currentGame.isPlayer2Turn = !currentGame.isPlayer2Turn;
+
     colorSwitch();
   })
 });
