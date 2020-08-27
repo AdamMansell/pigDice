@@ -2,6 +2,16 @@
   font-size: 100px;
 }
 
+#number {
+  font-size: 100px;
+  padding: auto;
+}
+
+#win1, #win2 {
+  display: none;
+  color: white;
+}
+
 
 #die {
   background-color: lightblue;

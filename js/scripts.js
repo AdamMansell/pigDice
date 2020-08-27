@@ -5,18 +5,20 @@ function Game(player1Score, player2Score, isPlayer1Turn, isPlayer2Turn) {
   this.isPlayer2Turn = isPlayer2Turn;
 }
 
-function Hold(playerScoreOnHold){
+function Hold(playerScoreOnHold) {
   this.playerScoreOnHold = playerScoreOnHold;
 }
 
 
-Game.prototype.isWinner = function(playerScore){
-  if (playerScore >= 50){
+Game.prototype.isWinner = function (playerScore) {
+  if (playerScore >= 50) {
     return true
   } else {
     return false
   }
 }
+
+
 
 // Game.prototype.roll = function() {
 //   let randomNumber = Math.floor(Math.random() * 6) + 1;
@@ -76,9 +78,11 @@ $(document).ready(function () {
       currentGame.isPlayer2Turn = !currentGame.isPlayer2Turn;
     } else if (currentGame.isPlayer1Turn) {
       currentGame.player1Score += randomNumber; // logic
+      currentGame.isWinner(currentGame.player1Score) ? $("#win1").show() : $("#win1").hide();
       $("#p1-score").text(currentGame.player1Score) // ui
     } else if (currentGame.isPlayer2Turn) {
       currentGame.player2Score += randomNumber;
+      currentGame.isWinner(currentGame.player2Score) ? $("#win2").show() : $("#win2").hide();
       $("#p2-score").text(currentGame.player2Score)
     }
     $("#number").text(randomNumber);
