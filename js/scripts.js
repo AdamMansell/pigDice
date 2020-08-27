@@ -5,6 +5,29 @@ function Game(player1Score, player2Score, isPlayer1Turn, isPlayer2Turn) {
   this.isPlayer2Turn = isPlayer2Turn;
 }
 
+// let modal = document.getElementById("myModal");
+// let span = document.getElementsByClassName("close")[0];
+
+// modal.style.display = "block";
+
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+// }
+
+Game.prototype.isWinner = function(playerScore){
+  if (playerScore >= 50){
+    return true
+  } else {
+    return false
+  }
+}
+
 // Game.prototype.roll = function() {
 //   let randomNumber = Math.floor(Math.random() * 6) + 1;
 //   return randomNumber;
@@ -15,6 +38,24 @@ function Game(player1Score, player2Score, isPlayer1Turn, isPlayer2Turn) {
 
 
 // ---------------- UI --------------------
+
+function colorSwitch() {
+  if ($("#player1Box").hasClass("player-turn-true")) {
+    $("#player1Box").addClass("player-turn-false");
+    $("#player1Box").removeClass("player-turn-true");
+  } else if ($("#player1Box").hasClass("player-turn-false")) {
+    $("#player1Box").addClass("player-turn-true");
+    $("#player1Box").removeClass("player-turn-false");
+  }
+  if ($("#player2Box").hasClass("player-turn-true")) {
+    $("#player2Box").addClass("player-turn-false");
+    $("#player2Box").removeClass("player-turn-true");
+  } else if ($("#player2Box").hasClass("player-turn-false")) {
+    $("#player2Box").addClass("player-turn-true");
+    $("#player2Box").removeClass("player-turn-false");
+  }
+}
+
 $(document).ready(function () {
 
   let currentGame = new Game(0, 0, true, false);
@@ -34,17 +75,11 @@ $(document).ready(function () {
       if (currentGame.isPlayer1Turn) {
         currentGame.player1Score = 0;
         $("#p1-score").text(currentGame.player1Score);
-        $("#player1Box").addClass("player-turn-false");
-        $("#player1Box").removeClass("player-turn-true");
-        $("#player2Box").addClass("player-turn-true");
-        $("#player2Box").removeClass("player-turn-false");
+        colorSwitch();
       } else if (currentGame.isPlayer2Turn) {
         currentGame.player2Score = 0;
         $("#p2-score").text(currentGame.player2Score);
-        $("#player2Box").addClass("player-turn-false");
-        $("#player2Box").removeClass("player-turn-true");
-        $("#player1Box").addClass("player-turn-true");
-        $("#player1Box").removeClass("player-turn-false");
+        colorSwitch();
       }
       currentGame.isPlayer1Turn = !currentGame.isPlayer1Turn;
       currentGame.isPlayer2Turn = !currentGame.isPlayer2Turn;
@@ -64,20 +99,6 @@ $(document).ready(function () {
     snd.play();
     currentGame.isPlayer1Turn = !currentGame.isPlayer1Turn;
     currentGame.isPlayer2Turn = !currentGame.isPlayer2Turn;
-
-    if ($("#player1Box").hasClass("player-turn-true")) {
-      $("#player1Box").addClass("player-turn-false");
-      $("#player1Box").removeClass("player-turn-true");
-    } else if ($("#player1Box").hasClass("player-turn-false")) {
-      $("#player1Box").addClass("player-turn-true");
-      $("#player1Box").removeClass("player-turn-false");
-    }
-    if ($("#player2Box").hasClass("player-turn-true")) {
-      $("#player2Box").addClass("player-turn-false");
-      $("#player2Box").removeClass("player-turn-true");
-    } else if ($("#player2Box").hasClass("player-turn-false")) {
-      $("#player2Box").addClass("player-turn-true");
-      $("#player2Box").removeClass("player-turn-false");
-    }
+    colorSwitch();
   })
 });
